@@ -19,18 +19,14 @@
 #   displayName: 'Run a multi-line script'
 
 
-
-trigger:
-- main
+trigger: none
+pr: none
 
 pool:
-  vmImage: ubuntu-latest
-  
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+  name: Lab Pool   # seu pool self-hosted (NÃO usar vmImage aqui)
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+steps:
+  - powershell: |
+      Write-Host "Agente: $(Agent.Name)"
+      Write-Host "Run ID: $(Build.BuildId)"
+
